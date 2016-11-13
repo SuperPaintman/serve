@@ -15,7 +15,6 @@ From sources:
 $ cd ~/Projects
 $ git clone https://github.com/SuperPaintman/serve
 $ cd ./serve
-$ mkdir ./bin
 $ crystal build --release -o ./bin/serve ./src/serve.cr
 $ ln -s "$PWD/bin/serve" /usr/local/bin/serve
 ```
