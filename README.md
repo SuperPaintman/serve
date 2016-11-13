@@ -7,6 +7,9 @@
 Command line static HTTP server
 
 
+![Screenshot][screenshot-image]
+
+
 ## Installation
 
 From sources:
@@ -78,6 +81,7 @@ crystal spec
 [license-url]: LICENSE
 [changelog-url]: CHANGELOG.md
 [docs-url]: https://superpaintman.github.io/serve/
+[screenshot-image]: README/screenshot.png
 [travis-image]: https://img.shields.io/travis/SuperPaintman/serve/master.svg?label=linux
 [travis-url]: https://travis-ci.org/SuperPaintman/serve
 [shards-image]: https://img.shields.io/github/tag/superpaintman/serve.svg?label=shards
