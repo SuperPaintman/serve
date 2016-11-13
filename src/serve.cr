@@ -7,12 +7,12 @@ require "option_parser"
 private SERVER_NAME = "Serve"
 
 private COLORS = {
-  :time => :dark_gray,
-  :method => :green,
-  :resource => :cyan,
-  :version => :magenta,
-  :status_code => :blue,
-  :elapsed_text => :yellow
+  :time         => :dark_gray,
+  :method       => :green,
+  :resource     => :cyan,
+  :version      => :magenta,
+  :status_code  => :blue,
+  :elapsed_text => :yellow,
 }
 
 module Serve
@@ -28,7 +28,6 @@ module Serve
       port = port.colorize(:yellow)
       public_dir = public_dir.colorize(:cyan)
     end
-
 
     puts "Serving #{public_dir} dir on #{host}:#{port}"
 
@@ -70,7 +69,7 @@ module Serve
       elapsed_text = elapsed_text(elapsed)
 
       # Headers
-      ## X-Response-Time
+      # X-Response-Time
       millis = elapsed.total_milliseconds.to_s
       context.response.headers["X-Response-Time"] = millis + "ms"
 
