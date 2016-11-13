@@ -1,0 +1,5 @@
+language: crystal
+
+branches:
+  except:
+    - gh-pages

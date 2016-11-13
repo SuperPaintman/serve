@@ -1,0 +1,10 @@
+name: serve
+version: 0.1.0
+
+authors:
+  - SuperPaintman <SuperPaintmanDeveloper@gmail.com>
+
+idescription: |
+  Command line static HTTP server
+
+license: MIT
