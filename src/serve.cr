@@ -137,6 +137,10 @@ if true
     parser.on("--no-color", "Turn off colored log") do
       colors = false
     end
+    parser.on("-v", "--version", "Show serve version") do
+      puts Serve::VERSION
+      exit
+    end
     parser.on("-h", "--help", "Show this help") do
       puts parser
       exit
