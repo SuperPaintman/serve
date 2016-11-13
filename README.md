@@ -43,6 +43,23 @@ crystal spec
 
 --------------------------------------------------------------------------------
 
+## Shell tab auto-completion
+
+To enable tab auto-completion for **Serve**, add one of the following lines
+to your `~/.zshrc` file.
+
+```sh
+# Zsh, ~/.zshrc
+if [[ -z $commands[serve] ]]; then
+    echo 'serve is not installed, you should install it first'
+else
+    eval "$(serve --completion=zsh)"
+fi
+```
+
+
+--------------------------------------------------------------------------------
+
 ## Contributing
 
 1. Fork it (<https://github.com/SuperPaintman/serve/fork>)

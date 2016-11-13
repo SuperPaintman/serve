@@ -6,6 +6,8 @@ require "option_parser"
 # Constants
 private SERVER_NAME = "Serve"
 
+private SHELLS = ["zsh"]
+
 private COLORS = {
   :time         => :dark_gray,
   :method       => :green,
@@ -14,6 +16,42 @@ private COLORS = {
   :status_code  => :blue,
   :elapsed_text => :yellow,
 }
+
+# Completions
+# TODO: add dynamic generator based on parser
+private def completion_zsh(): String
+  <<-EOF
+  #!/bin/zsh
+
+  # if [[ -z $commands[serve] ]]; then
+  #   echo 'serve is not installed, you should install it first'
+  #   return -1
+  # fi
+
+  # Serve
+  # version: #{Serve::VERSION}
+
+  # Usage:
+  # eval "$(serve --completion=zsh)"
+
+  function _completion_serve() {
+    local ret=1
+
+    _arguments -C \\
+      '(-H, --host)'{-H,--host=}'[Server host]:host: ' \\
+      '(-p, --port)'{-p,--port=}'[Server port]:port: ' \\
+      '(--no-color)--no-color[Turn off colored log]' \\
+      '(--completion)--completion=[Print tab auto-completion for Serve]:shell:(#{SHELLS.join(" ")})' \\
+      '(-v, --version)'{-v,--version}'[Show serve version]' \\
+      '(-h, --help)'{-h,--help}'[Show this help]' \\
+      '*:directory:_directories' && ret=0
+
+    return ret
+  }
+
+  compdef _completion_serve serve
+  EOF
+end
 
 module Serve
   def self.run(*, host = "0.0.0.0", port = 8000, public_dir = "./", colors = true)
@@ -136,6 +174,16 @@ if true
     end
     parser.on("--no-color", "Turn off colored log") do
       colors = false
+    end
+    parser.on("--completion=SHELL", "Print tab auto-completion for Serve") do |val|
+      {% for name, index in SHELLS %}
+        if val == {{name}}
+          puts completion_{{name.id}}
+          exit
+        end
+      {% end %}
+
+      raise "Unknown shell: #{val.downcase}. Available: #{SHELLS.join(", ")}"
     end
     parser.on("-v", "--version", "Show serve version") do
       puts Serve::VERSION
