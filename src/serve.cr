@@ -19,7 +19,7 @@ private COLORS = {
 
 # Completions
 # TODO: add dynamic generator based on parser
-private def completion_zsh(): String
+private def completion_zsh : String
   <<-EOF
   #!/bin/zsh
 
