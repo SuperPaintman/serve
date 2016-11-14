@@ -15,7 +15,7 @@ Command line static HTTP server
 Download from **github**:
 
 ```sh
-$ serve_version="0.1.0"
+$ serve_version="0.1.1"
 $ serve_arch="x86_64"
 $ curl -Lo /usr/local/bin/serve.gz "https://github.com/SuperPaintman/serve/releases/download/v${serve_version}/serve-${serve_version}_linux_${serve_arch}.gz"
 $ gunzip /usr/local/bin/serve.gz
