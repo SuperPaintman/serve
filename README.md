@@ -29,7 +29,7 @@ From sources:
 $ cd ~/Projects
 $ git clone https://github.com/SuperPaintman/serve
 $ cd ./serve
-$ crystal build --release -o ./bin/serve ./src/serve.cr
+$ crystal build --release -o ./bin/serve ./src/serve/bootstrap.cr
 $ ln -s "$PWD/bin/serve" /usr/local/bin/serve
 ```
 

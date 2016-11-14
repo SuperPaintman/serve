@@ -1,59 +1,24 @@
-require "./serve/*"
 require "http"
 require "colorize"
-require "option_parser"
 
-# Constants
-private SERVER_NAME = "Serve"
-
-private SHELLS = ["zsh"]
-
-private COLORS = {
-  :time         => :dark_gray,
-  :method       => :green,
-  :resource     => :cyan,
-  :version      => :magenta,
-  :status_code  => :blue,
-  :elapsed_text => :yellow,
-}
-
-# Completions
-# TODO: add dynamic generator based on parser
-private def completion_zsh : String
-  <<-EOF
-  #!/bin/zsh
-
-  # if [[ -z $commands[serve] ]]; then
-  #   echo 'serve is not installed, you should install it first'
-  #   return -1
-  # fi
-
-  # Serve
-  # version: #{Serve::VERSION}
-
-  # Usage:
-  # eval "$(serve --completion=zsh)"
-
-  function _completion_serve() {
-    local ret=1
-
-    _arguments -C \\
-      '(-H, --host)'{-H,--host=}'[Server host]:host: ' \\
-      '(-p, --port)'{-p,--port=}'[Server port]:port: ' \\
-      '(--no-color)--no-color[Turn off colored log]' \\
-      '(--completion)--completion=[Print tab auto-completion for Serve]:shell:(#{SHELLS.join(" ")})' \\
-      '(-v, --version)'{-v,--version}'[Show serve version]' \\
-      '(-h, --help)'{-h,--help}'[Show this help]' \\
-      '*:directory:_directories' && ret=0
-
-    return ret
-  }
-
-  compdef _completion_serve serve
-  EOF
-end
+require "./serve/version"
+require "./serve/cli"
+require "./serve/completion"
 
 module Serve
+  SERVER_NAME = "Serve"
+
+  SHELLS = ["zsh"]
+
+  COLORS = {
+    :time         => :dark_gray,
+    :method       => :green,
+    :resource     => :cyan,
+    :version      => :magenta,
+    :status_code  => :blue,
+    :elapsed_text => :yellow,
+  }
+
   def self.run(*, host = "0.0.0.0", port = 8000, public_dir = "./", colors = true)
     handler = Serve::StaticFileHandler.new(public_dir)
     logger = Serve::LogPrettyHandler.new(STDOUT, colors: colors)
@@ -86,7 +51,7 @@ module Serve
       end
 
       # Add server name
-      context.response.headers["Server"] = SERVER_NAME
+      context.response.headers["Server"] = Serve::SERVER_NAME
 
       super
     end
@@ -117,13 +82,13 @@ module Serve
       status_code = context.response.status_code
 
       if @colors
-        time_str = time_str.colorize(COLORS[:time])
-        elapsed_text = elapsed_text.colorize(COLORS[:elapsed_text])
+        time_str = time_str.colorize(Serve::COLORS[:time])
+        elapsed_text = elapsed_text.colorize(Serve::COLORS[:elapsed_text])
 
-        method = method.colorize(COLORS[:method])
-        resource = resource.colorize(COLORS[:resource])
-        version = version.colorize(COLORS[:version])
-        status_code = status_code.colorize(COLORS[:status_code])
+        method = method.colorize(Serve::COLORS[:method])
+        resource = resource.colorize(Serve::COLORS[:resource])
+        version = version.colorize(Serve::COLORS[:version])
+        status_code = status_code.colorize(Serve::COLORS[:status_code])
       end
 
       # TODO: add ip addr
@@ -141,11 +106,11 @@ module Serve
       message = "Unhandled #exception"
 
       if @colors
-        time_str = time_str.colorize(COLORS[:time])
+        time_str = time_str.colorize(Serve::COLORS[:time])
 
-        method = method.colorize(COLORS[:method])
-        resource = resource.colorize(COLORS[:resource])
-        version = version.colorize(COLORS[:version])
+        method = method.colorize(Serve::COLORS[:method])
+        resource = resource.colorize(Serve::COLORS[:resource])
+        version = version.colorize(Serve::COLORS[:version])
 
         message = message.colorize(:red)
       end
@@ -155,59 +120,4 @@ module Serve
       raise e
     end
   end
-end
-
-# TODO: add checking like `__FILE__ == $0`
-if true
-  host = "0.0.0.0"
-  port = 8000
-  public_dir = "./"
-  colors = true
-
-  OptionParser.parse! do |parser|
-    parser.banner = "Usage: serve [arguments] [public_dir]"
-    parser.on("-H HOST", "--host=HOST", "Server host") do |val|
-      host = val
-    end
-    parser.on("-p PORT", "--port=PORT", "Server port") do |val|
-      port = val.to_i
-    end
-    parser.on("--no-color", "Turn off colored log") do
-      colors = false
-    end
-    parser.on("--completion=SHELL", "Print tab auto-completion for Serve") do |val|
-      {% for name, index in SHELLS %}
-        if val == {{name}}
-          puts completion_{{name.id}}
-          exit
-        end
-      {% end %}
-
-      raise "Unknown shell: #{val.downcase}. Available: #{SHELLS.join(", ")}"
-    end
-    parser.on("-v", "--version", "Show serve version") do
-      puts Serve::VERSION
-      exit
-    end
-    parser.on("-h", "--help", "Show this help") do
-      puts parser
-      exit
-    end
-
-    parser.unknown_args do |before_dash, after_dash|
-      if before_dash.size > 1
-        puts "Invalid args: #{before_dash[1..before_dash.size].join(", ")}"
-        puts parser
-        exit 1
-      end
-
-      if before_dash.empty?
-        next
-      end
-
-      public_dir = before_dash[0]
-    end
-  end
-
-  Serve.run(host: host, port: port, public_dir: public_dir, colors: colors)
 end
