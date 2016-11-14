@@ -29,8 +29,10 @@ From sources:
 $ cd ~/Projects
 $ git clone https://github.com/SuperPaintman/serve
 $ cd ./serve
-$ crystal build --release -o ./bin/serve ./src/serve/bootstrap.cr
-$ ln -s "$PWD/bin/serve" /usr/local/bin/serve
+$ make
+$ sudo make install
+$ # or
+$ sudo make reinstall
 ```
 
 
@@ -39,7 +41,7 @@ $ ln -s "$PWD/bin/serve" /usr/local/bin/serve
 ## Usage
 
 ```sh
-serve -h
+$ serve -h
 ```
 
 
@@ -48,7 +50,9 @@ serve -h
 ## Test
 
 ```sh
-crystal spec
+$ crystal spec
+# or
+$ make test
 ```
 
 
