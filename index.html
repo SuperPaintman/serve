@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/SuperPaintman/serve">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>README - github.com/SuperPaintman/serve</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li class="current"><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent " data-id="github.com/SuperPaintman/serve/Serve" data-name="serve">
+      <a href="Serve.html">Serve</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/SuperPaintman/serve/Serve/CLI" data-name="serve::cli">
+      <a href="Serve/CLI.html">CLI</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SuperPaintman/serve/Serve/Completion" data-name="serve::completion">
+      <a href="Serve/Completion.html">Completion</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SuperPaintman/serve/Serve/LogPrettyHandler" data-name="serve::logprettyhandler">
+      <a href="Serve/LogPrettyHandler.html">LogPrettyHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SuperPaintman/serve/Serve/StaticFileHandler" data-name="serve::staticfilehandler">
+      <a href="Serve/StaticFileHandler.html">StaticFileHandler</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1>Serve</h1>
+
+<p>[![Linux Build][travis-image]][travis-url]
+[![Shards version][shards-image]][shards-url]</p>
+
+<p>Command line static HTTP server</p>
+
+<p>![Screenshot][screenshot-image]</p>
+
+<h2>Installation</h2>
+
+<p>Download from <strong>github</strong>:</p>
+
+<pre><code class='language-sh'>$ serve_version="0.1.1"
+$ serve_arch="x86_64"
+$ curl -Lo /usr/local/bin/serve.gz "https://github.com/SuperPaintman/serve/releases/download/v${serve_version}/serve-${serve_version}_linux_${serve_arch}.gz"
+$ gunzip /usr/local/bin/serve.gz
+$ chmod +x /usr/local/bin/serve</code></pre>
+
+<p>From sources:</p>
+
+<pre><code class='language-sh'>$ cd ~/Projects
+$ git clone https://github.com/SuperPaintman/serve
+$ cd ./serve
+$ make
+$ sudo make install
+$ # or
+$ sudo make reinstall</code></pre>
+
+<hr/><h2>Usage</h2>
+
+<pre><code class='language-sh'>$ serve -h</code></pre>
+
+<hr/><h2>Test</h2>
+
+<pre><code class='language-sh'>$ crystal spec
+# or
+$ make test</code></pre>
+
+<hr/><h2>Shell tab auto-completion</h2>
+
+<p>To enable tab auto-completion for <strong>Serve</strong>, add one of the following lines
+to your <code>~/.zshrc</code> file.</p>
+
+<pre><code class='language-sh'># Zsh, ~/.zshrc
+if [[ -z $commands[serve] ]]; then
+    echo 'serve is not installed, you should install it first'
+else
+    eval "$(serve --completion=zsh)"
+fi</code></pre>
+
+<hr/><h2>Contributing</h2>
+
+<ol><li>Fork it (&lt;https://github.com/SuperPaintman/serve/fork>)</li><li>Create your feature branch (<code>git checkout -b feature/<feature_name></code>)</li><li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li><li>Push to the branch (<code>git push origin feature/<feature_name></code>)</li><li>Create a new Pull Request</li></ol>
+
+<hr/><h2>Contributors</h2>
+
+<ul><li><a href="https://github.com/SuperPaintman" target="_blank">SuperPaintman</a> SuperPaintman - creator, maintainer</li></ul>
+
+<hr/><h2>API</h2>
+
+<p>[Docs][docs-url]</p>
+
+<hr/><h2>Changelog</h2>
+
+<p>[Changelog][changelog-url]</p>
+
+<hr/><h2>License</h2>
+
+<p>[MIT][license-url]</p>
+
+<p>[license-url]: LICENSE
+[changelog-url]: CHANGELOG.md
+[docs-url]: https://superpaintman.github.io/serve/
+[screenshot-image]: README/screenshot.png
+[travis-image]: https://img.shields.io/travis/SuperPaintman/serve/master.svg?label=linux
+[travis-url]: https://travis-ci.org/SuperPaintman/serve
+[shards-image]: https://img.shields.io/github/tag/superpaintman/serve.svg?label=shards
+[shards-url]: https://github.com/superpaintman/serve</p>
+
+
+</div>
+</body>
+</html>

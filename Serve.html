@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/SuperPaintman/serve">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Serve - github.com/SuperPaintman/serve</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class="parent current" data-id="github.com/SuperPaintman/serve/Serve" data-name="serve">
+      <a href="Serve.html">Serve</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/SuperPaintman/serve/Serve/CLI" data-name="serve::cli">
+      <a href="Serve/CLI.html">CLI</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SuperPaintman/serve/Serve/Completion" data-name="serve::completion">
+      <a href="Serve/Completion.html">Completion</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SuperPaintman/serve/Serve/LogPrettyHandler" data-name="serve::logprettyhandler">
+      <a href="Serve/LogPrettyHandler.html">LogPrettyHandler</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/SuperPaintman/serve/Serve/StaticFileHandler" data-name="serve::staticfilehandler">
+      <a href="Serve/StaticFileHandler.html">StaticFileHandler</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Serve
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>Completions</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/SuperPaintman/serve/blob/a9e601b25372083d0074d9eaa24df813b2b51489/src/serve/version.cr#L1" target="_blank">serve/version.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/SuperPaintman/serve/blob/a9e601b25372083d0074d9eaa24df813b2b51489/src/serve/cli.cr#L4" target="_blank">serve/cli.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/SuperPaintman/serve/blob/a9e601b25372083d0074d9eaa24df813b2b51489/src/serve/completion.cr#L1" target="_blank">serve/completion.cr</a>
+    
+    <br/>
+  
+    
+      <a href="https://github.com/SuperPaintman/serve/blob/a9e601b25372083d0074d9eaa24df813b2b51489/src/serve.cr#L8" target="_blank">serve.cr</a>
+    
+    <br/>
+  
+
+
+
+  
+    <h2>Constant Summary</h2>
+  
+  <dl>
+    
+      <dt class="entry-const" id="COLORS">
+        <strong>COLORS</strong> = <code>{<span class="n">:time</span> => <span class="n">:dark_gray</span>, <span class="n">:method</span> => <span class="n">:green</span>, <span class="n">:resource</span> => <span class="n">:cyan</span>, <span class="n">:version</span> => <span class="n">:magenta</span>, <span class="n">:status_code</span> => <span class="n">:blue</span>, <span class="n">:elapsed_text</span> => <span class="n">:yellow</span>}</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="SERVER_NAME">
+        <strong>SERVER_NAME</strong> = <code><span class="s">&quot;Serve&quot;</span></code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="SHELLS">
+        <strong>SHELLS</strong> = <code>[<span class="s">&quot;zsh&quot;</span>]</code>
+      </dt>
+      
+    
+      <dt class="entry-const" id="VERSION">
+        <strong>VERSION</strong> = <code><span class="s">&quot;0.1.1&quot;</span></code>
+      </dt>
+      
+    
+  </dl>
+
+
+
+  <h2>Class Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#run%28%2A%2Chost%3D%26quot%3B0.0.0.0%26quot%3B%2Cport%3D8000%2Cpublic_dir%3D%26quot%3B.%2F%26quot%3B%2Ccolors%3Dtrue%29-class-method" class="signature"><strong>.run</strong>(*, host = <span class="s">&quot;0.0.0.0&quot;</span>, port = <span class="n">8000</span>, public_dir = <span class="s">&quot;./&quot;</span>, colors = <span class="n">true</span>)</a>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+  <h2>Class Method Detail</h2>
+  
+    <div class="entry-detail" id="run&#40;*,host&#61;&amp;quot;0.0.0.0&amp;quot;,port&#61;8000,public_dir&#61;&amp;quot;./&amp;quot;,colors&#61;true&#41;-class-method">
+      <div class="signature">
+        
+        def self.<strong>run</strong>(*, host = <span class="s">&quot;0.0.0.0&quot;</span>, port = <span class="n">8000</span>, public_dir = <span class="s">&quot;./&quot;</span>, colors = <span class="n">true</span>)
+
+        <a class="method-permalink" href="#run%28%2A%2Chost%3D%26quot%3B0.0.0.0%26quot%3B%2Cport%3D8000%2Cpublic_dir%3D%26quot%3B.%2F%26quot%3B%2Ccolors%3Dtrue%29-class-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/SuperPaintman/serve/blob/a9e601b25372083d0074d9eaa24df813b2b51489/src/serve.cr#L22" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+
+
+</div>
+
+</body>
+</html>
